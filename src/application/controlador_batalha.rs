@@ -213,11 +213,13 @@ impl ControladorBatalha {
             return;
         };
 
-        let atlas = if preview.valido {
-            Vector2i::new(8, 7)
+        // Usa sempre o tile de navio e muda apenas o filtro de cor do preview.
+        let atlas = Vector2i::new(8, 7);
+        if preview.valido {
+            preview_map.set_modulate(Color::from_rgba(0.35, 1.0, 0.35, 0.70));
         } else {
-            Vector2i::new(10, 3)
-        };
+            preview_map.set_modulate(Color::from_rgba(1.0, 0.35, 0.35, 0.70));
+        }
 
         for (px, py) in preview.celulas.iter() {
             preview_map
@@ -236,6 +238,7 @@ impl ControladorBatalha {
             .try_get_node_as::<TileMapLayer>("PreviewPosicionamento")
         {
             preview_map.clear();
+            preview_map.set_modulate(Color::WHITE);
         }
         self.preview_posicionamento = None;
     }
