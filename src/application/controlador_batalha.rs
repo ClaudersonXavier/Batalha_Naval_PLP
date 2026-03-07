@@ -1,5 +1,5 @@
 use godot::classes::{INode2D, Input, InputEvent, InputEventKey, InputEventMouseButton, Label, Node2D, TileMapLayer};
-use godot::global::MouseButton;
+use godot::global::{Key, MouseButton};
 use godot::prelude::*;
 
 use crate::application::fase_posicionamento::FasePosicionamento;
@@ -76,13 +76,13 @@ impl INode2D for ControladorBatalha {
     }
 
     fn process(&mut self, delta: f64) {
+        // Atualizar interface primeiro, independente do estado
+        self.gerenciador_interface.atualizar(
+            self.gerenciador_turnos.estado_atual(),
+            self.gerenciador_turnos.rodada_atual(),
+        );
+
         if self.gerenciador_turnos.estado_atual() == EstadoTurno::SelecaoDificuldade {
-            if let Some(mut tooltip) = self.tooltip_instrucao.clone() {
-                tooltip.set_text(self.fase_selecao_dificuldade.texto_tooltip());
-                tooltip.set_visible(true);
-                tooltip.set_position(Vector2::new(20.0, 20.0));
-            }
-            
             if let Some(campo_jogador) = self.base().try_get_node_as::<TileMapLayer>("CampoJogador") {
                 cursor::esconder_cursor(campo_jogador);
             }
@@ -106,10 +106,6 @@ impl INode2D for ControladorBatalha {
         }
 
         self.atualizar_controle_cursor();
-        self.gerenciador_interface.atualizar(
-            self.gerenciador_turnos.estado_atual(),
-            self.gerenciador_turnos.rodada_atual(),
-        );
 
         // Processar delays de som
         self.gerenciador_audio.processar_delays(delta);
@@ -138,7 +134,17 @@ impl INode2D for ControladorBatalha {
     }
 
     fn input(&mut self, event: Gd<InputEvent>) {
+        // Detectar R para reiniciar quando o jogo terminou
         if self.gerenciador_turnos.jogo_terminou() {
+            if let Ok(key_event) = event.try_cast::<InputEventKey>() {
+                if key_event.is_pressed() && !key_event.is_echo() {
+                    let keycode = key_event.get_keycode();
+                    if keycode == Key::R {
+                        let mut tree = self.base().get_tree();
+                        tree.reload_current_scene();
+                    }
+                }
+            }
             return;
         }
 
@@ -169,6 +175,39 @@ impl INode2D for ControladorBatalha {
                     self.tratar_clique_disparo_jogador(click_pos);
                 }
                 _ => {}
+            }
+        }
+    }
+}
+
+#[godot_api]
+impl ControladorBatalha {
+    #[func]
+    pub fn selecionar_dificuldade_facil(&mut self) {
+        if self.gerenciador_turnos.estado_atual() == EstadoTurno::SelecaoDificuldade {
+            if let Some(ia) = self.fase_selecao_dificuldade.processar_selecao(0) {
+                self.jogador_ia = Some(ia);
+                self.gerenciador_turnos.confirmar_dificuldade();
+            }
+        }
+    }
+
+    #[func]
+    pub fn selecionar_dificuldade_media(&mut self) {
+        if self.gerenciador_turnos.estado_atual() == EstadoTurno::SelecaoDificuldade {
+            if let Some(ia) = self.fase_selecao_dificuldade.processar_selecao(1) {
+                self.jogador_ia = Some(ia);
+                self.gerenciador_turnos.confirmar_dificuldade();
+            }
+        }
+    }
+
+    #[func]
+    pub fn selecionar_dificuldade_dificil(&mut self) {
+        if self.gerenciador_turnos.estado_atual() == EstadoTurno::SelecaoDificuldade {
+            if let Some(ia) = self.fase_selecao_dificuldade.processar_selecao(2) {
+                self.jogador_ia = Some(ia);
+                self.gerenciador_turnos.confirmar_dificuldade();
             }
         }
     }
