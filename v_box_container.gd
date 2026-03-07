@@ -1,11 +1,14 @@
 extends VBoxContainer
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	$MargemBotoes/botoes/start.grab_focus()
+	$start.grab_focus()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _on_start_pressed():
 	print("pressionou start")
+
+
+func _unhandled_input(event):
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_C:
+			get_tree().change_scene_to_file("res://scenes/modo_campanha.tscn")
