@@ -130,10 +130,12 @@ impl INode2D for ControladorBatalha {
                 EstadoTurno::VitoriaJogador => {
                     self.gerenciador_audio.tocar_vitoria();
                     self.emitir_resultado_final(true);
+                    self.gerenciador_interface.atualizar(estado_atual, self.gerenciador_turnos.rodada_atual());
                 }
                 EstadoTurno::VitoriaIA => {
                     self.gerenciador_audio.tocar_derrota();
                     self.emitir_resultado_final(false);
+                    self.gerenciador_interface.atualizar(estado_atual, self.gerenciador_turnos.rodada_atual());
                 }
                 _ => {}
             }
