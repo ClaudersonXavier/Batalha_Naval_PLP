@@ -10,6 +10,7 @@ pub struct GerenciadorInterface {
     label_resultado: Option<Gd<Label>>,
     botao_continuar: Option<Gd<Button>>,
     label_ajuda_posicionamento: Option<Gd<Label>>,
+    label_movimento_dinamico: Option<Gd<Label>>,
     botao_confirmar_posicionamento: Option<Gd<Button>>,
     container_navios: Option<Gd<GridContainer>>,
 }
@@ -22,6 +23,7 @@ impl GerenciadorInterface {
             label_resultado: None,
             botao_continuar: None,
             label_ajuda_posicionamento: None,
+            label_movimento_dinamico: None,
             botao_confirmar_posicionamento: None,
             container_navios: None,
         }
@@ -110,6 +112,23 @@ impl GerenciadorInterface {
             label_ajuda.set_text("Aperte R para girar os navios");
             label_ajuda.set_visible(false);
             self.label_ajuda_posicionamento = Some(label_ajuda);
+        }
+
+        if let Some(mut label_movimento) = node.try_get_node_as::<Label>("LabelMovimentoDinamico") {
+            if let Some(ref font_file) = font {
+                label_movimento.add_theme_font_override("font", font_file);
+            }
+            label_movimento.add_theme_font_size_override("font_size", 13);
+            label_movimento.add_theme_color_override("font_color", Color::from_rgb(0.0, 0.0, 0.0));
+            label_movimento.add_theme_color_override("font_outline_color", Color::from_rgb(1.0, 1.0, 1.0));
+            label_movimento.add_theme_constant_override("outline_size", 2);
+            label_movimento.set_horizontal_alignment(HorizontalAlignment::CENTER);
+            label_movimento.set_position(Vector2::new(80.0, 320.0));
+            label_movimento.set_size(Vector2::new(400.0, 25.0));
+            label_movimento.set_z_index(100);
+            label_movimento.set_text("Clique em um navio intacto para movê-lo. (Um por turno)");
+            label_movimento.set_visible(false);
+            self.label_movimento_dinamico = Some(label_movimento);
         }
 
         if let Some(mut botao) = node.try_get_node_as::<Button>("BotaoConfirmarPosicionamento") {
@@ -263,6 +282,18 @@ impl GerenciadorInterface {
     pub fn esconder_container_navios(&mut self) {
         if let Some(mut container) = self.container_navios.clone() {
             container.set_visible(false);
+        }
+    }
+
+    pub fn mostrar_label_movimento_dinamico(&mut self) {
+        if let Some(mut label) = self.label_movimento_dinamico.clone() {
+            label.set_visible(true);
+        }
+    }
+
+    pub fn esconder_label_movimento_dinamico(&mut self) {
+        if let Some(mut label) = self.label_movimento_dinamico.clone() {
+            label.set_visible(false);
         }
     }
 

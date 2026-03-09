@@ -116,6 +116,13 @@ impl INode2D for ControladorBatalha {
             self.gerenciador_turnos.rodada_atual(),
         );
 
+        // Controlar visibilidade do label de movimento dinâmico
+        if self.modo_dinamico && self.gerenciador_turnos.estado_atual() == EstadoTurno::TurnoJogador {
+            self.gerenciador_interface.mostrar_label_movimento_dinamico();
+        } else {
+            self.gerenciador_interface.esconder_label_movimento_dinamico();
+        }
+
         if self.gerenciador_turnos.estado_atual() == EstadoTurno::SelecaoDificuldade {
             if let Some(campo_jogador) = self.base().try_get_node_as::<TileMapLayer>("CampoJogador") {
                 cursor::esconder_cursor(campo_jogador);

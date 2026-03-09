@@ -474,6 +474,10 @@ offset_bottom = 21.0
 offset_right = 40.0
 offset_bottom = 21.0
 
+[node name="LabelMovimentoDinamico" type="Label" parent="ControladorBatalha" unique_id=1580659357]
+offset_right = 40.0
+offset_bottom = 21.0
+
 [node name="BotaoContinuar" type="Button" parent="ControladorBatalha" unique_id=1469092788]
 offset_right = 40.0
 offset_bottom = 21.0
