@@ -1,4 +1,3 @@
-use godot::prelude::*;
 use godot::classes::FileAccess;
 use godot::classes::file_access::ModeFlags;
 use crate::domain::entidades::usuario::Usuario;
@@ -48,10 +47,6 @@ impl RepositorioUsuario for RepositorioUsuarioJson {
 
     fn achar_por_login(&self, login: &str) -> Option<Usuario> {
         self.users.iter().find(|u| u.login == login).cloned()
-    }
-
-    fn achar_por_id(&self, id: u64) -> Option<Usuario> {
-        self.users.iter().find(|u| u.id == id).cloned()
     }
 
     fn atualizar(&mut self, usuario: Usuario) -> Result<(), String> {

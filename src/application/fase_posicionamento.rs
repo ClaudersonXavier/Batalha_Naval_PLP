@@ -74,10 +74,6 @@ impl FasePosicionamento {
         }
     }
 
-    pub fn navio_selecionado_indice(&self) -> Option<usize> {
-        self.navio_selecionado
-    }
-
     pub fn obter_fila_navios(&self) -> &[(String, usize)] {
         &self.fila_navios
     }
@@ -173,10 +169,6 @@ impl FasePosicionamento {
 
     pub fn ativar_modo_edicao(&mut self) {
         self.modo_edicao = true;
-    }
-
-    pub fn desativar_modo_edicao(&mut self) {
-        self.modo_edicao = false;
     }
 
     pub fn remover_navio(&mut self, nome: &str) -> bool {

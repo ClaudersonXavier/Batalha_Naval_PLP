@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bevc30ft6uwcf" path="res://textures/fundo_vitoria_e_derrota.png" id="1_3redg"]
 [ext_resource type="Texture2D" uid="uid://b5svmjy7114dt" path="res://textures/capitao_feliz.png" id="2_4wkkb"]
 [ext_resource type="Texture2D" uid="uid://b5lunk55ibc1y" path="res://textures/balao_de_fala.png" id="3_820o3"]
-[ext_resource type="PackedScene" uid="uid://bo6cmgk4y7g23" path="res://scenes/meubotao.tscn" id="4_4wkkb"]
+[ext_resource type="PackedScene" uid="uid://bo6cmgk4y7g23" path="res://scenes/ui/meubotao.tscn" id="4_4wkkb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_80vbu"]
 texture = ExtResource("3_820o3")

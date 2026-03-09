@@ -11,14 +11,15 @@ config_version=5
 [application]
 
 config/name="Batalha Naval"
-run/main_scene="res://TelaLogin.tscn"
+run/main_scene="res://scenes/ui/TelaLogin.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://cd44t56excs3c"
 
 [autoload]
 
-CampaignState="*res://campaign_state.gd"
-UsuarioLogadoOverlay="*res://usuario_logado_overlay.gd"
+CampaignState="*res://scripts/autoload/campaign_state.gd"
+SessionStore="*res://scripts/autoload/session_store.gd"
+UsuarioLogadoOverlay="*res://scripts/autoload/usuario_logado_overlay.gd"
 
 [display]
 

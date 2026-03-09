@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://ckxroacem0nru"]
+[gd_scene format=3]
 
 [ext_resource type="Texture2D" uid="uid://ca1uij7ohyy3t" path="res://textures/navio_intro.png" id="1_pi62y"]
 [ext_resource type="FontFile" uid="uid://cbvk8gbmixmbq" path="res://fonts/Retro Gaming.ttf" id="2_pi62y"]
-[ext_resource type="PackedScene" uid="uid://bo6cmgk4y7g23" path="res://scenes/meubotao.tscn" id="3_ectly"]
-[ext_resource type="Script" uid="uid://c2y3w4nruu3q0" path="res://v_box_container.gd" id="3_pi62y"]
+[ext_resource type="PackedScene" uid="uid://bo6cmgk4y7g23" path="res://scenes/ui/meubotao.tscn" id="3_ectly"]
+[ext_resource type="Script" uid="uid://c2y3w4nruu3q0" path="res://scripts/ui/menu/v_box_container.gd" id="3_pi62y"]
 [ext_resource type="Texture2D" uid="uid://cnxa7wfi3kwvc" path="res://textures/logo.png" id="5_ectly"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ectly"]

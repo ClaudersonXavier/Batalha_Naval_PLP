@@ -1,9 +1,8 @@
 extends Node2D
 
 const CAMPANHA_SCENE_PATH := "res://scenes/modo_campanha.tscn"
-const MENU_SCENE_PATH := "res://MenuPrincipal.tscn"
-const VITORIA_SCENE_PATH := "res://scenes/tela_vitoria.tscn"
-const DERROTA_SCENE_PATH := "res://scenes/tela_derrota.tscn"
+const VITORIA_SCENE_PATH := "res://scenes/ui/tela_vitoria.tscn"
+const DERROTA_SCENE_PATH := "res://scenes/ui/tela_derrota.tscn"
 
 @onready var controlador: Node = $ControladorBatalha
 
@@ -32,17 +31,7 @@ func _on_batalha_encerrada(vitoria: bool) -> void:
 		return
 
 	var usuario_node = UsuarioNode.new()
-	var login_atual = ""
-	
-	var caminho_absoluto = ProjectSettings.globalize_path("res://dados/usuario_atual.json")
-	var file = FileAccess.open(caminho_absoluto, FileAccess.READ)
-	
-	if file:
-		var json_text = file.get_as_text()
-		file.close()
-		var dict = JSON.parse_string(json_text)
-		if dict is Dictionary:
-			login_atual = dict.get("login", "")
+	var login_atual := SessionStore.ler_login_atual()
 
 	if vitoria:
 		CampaignState.registrar_vitoria()

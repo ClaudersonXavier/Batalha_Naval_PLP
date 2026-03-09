@@ -1,7 +1,7 @@
 <a id="topo"></a>
 
 <p align="center">
-  <img src="header-project-rust.png" alt="Gameplay Batalha Naval"/>
+  <img src="docs/assets/header_project_rust.png" alt="Gameplay Batalha Naval"/>
 </p>
 
 <h1 align="center">Rustland Sea Raiders (Rust + Godot)</h1>
@@ -49,7 +49,7 @@ Projeto acadêmico desenvolvido para a disciplina de **Paradigmas de Linguagens 
 
 ## Preview
 
-![Preview do jogo](image.png)
+![Preview do jogo](docs/assets/preview_gameplay.png)
 
 <a id="tecnologias"></a>
 ## Tecnologias
@@ -83,7 +83,10 @@ Arquivos centrais da lógica:
 src/
 |-- lib.rs
 |-- application/
-|   |-- controlador_batalha.rs
+|   |-- app_paths.rs
+|   |-- controlador_batalha/
+|   |   |-- mod.rs
+|   |   `-- internal.rs
 |   |-- fase_posicionamento.rs
 |   |-- fase_selecao_dificuldade.rs
 |   |-- gerenciador_audio.rs
@@ -108,9 +111,33 @@ src/
 |   `-- mod.rs
 `-- presentation/
     |-- batalha/
+    |-- cena_conquistas.rs
     |-- cena_fim_de_jogo.rs
     |-- cena_ranking.rs
     `-- mod.rs
+
+scripts/
+|-- autoload/
+|   |-- campaign_state.gd
+|   |-- session_store.gd
+|   `-- usuario_logado_overlay.gd
+`-- ui/
+    |-- login/tela_login.gd
+    `-- menu/v_box_container.gd
+
+scenes/
+|-- cena-batalha.tscn
+|-- modo_campanha.tscn
+`-- ui/
+    |-- CenaConquistas.tscn
+    |-- TelaLogin.tscn
+    |-- MenuPrincipal.tscn
+    |-- tela_ranking.tscn
+    |-- tela_vitoria.tscn
+    |-- tela_derrota.tscn
+    |-- linha_jogador.tscn
+    |-- button.tscn
+    `-- meubotao.tscn
 ```
 
 Responsabilidades por camada:

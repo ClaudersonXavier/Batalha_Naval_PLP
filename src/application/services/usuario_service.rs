@@ -146,7 +146,7 @@ impl<R: RepositorioUsuario> UsuarioService<R> {
     }
 
     pub fn obter_estatisticas(&self, login: &str) -> Result<(usize, usize, usize, f32), String> {
-        let mut usuario = self.repo
+        let usuario = self.repo
             .achar_por_login(login)
             .ok_or("Usuário não encontrado".to_string())?;
 
@@ -159,5 +159,4 @@ impl<R: RepositorioUsuario> UsuarioService<R> {
     }
 
 }
-
 

@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://dwprnxdpbj2ov"]
+[gd_scene format=3]
 
-[ext_resource type="Texture2D" uid="uid://dgjs0hb1dhn32" path="res://ap (1).png" id="1_cefhe"]
+[ext_resource type="Texture2D" uid="uid://dgjs0hb1dhn32" path="res://textures/ui/login_background.png" id="1_cefhe"]
 [ext_resource type="FontFile" uid="uid://cbvk8gbmixmbq" path="res://fonts/Retro Gaming.ttf" id="2_x6tfd"]
-[ext_resource type="Script" uid="uid://bh4mmujqquxnf" path="res://tela_login.gd" id="3_x6tfd"]
-[ext_resource type="PackedScene" uid="uid://bo6cmgk4y7g23" path="res://scenes/meubotao.tscn" id="4_dwemr"]
+[ext_resource type="Script" uid="uid://bh4mmujqquxnf" path="res://scripts/ui/login/tela_login.gd" id="3_x6tfd"]
+[ext_resource type="PackedScene" uid="uid://bo6cmgk4y7g23" path="res://scenes/ui/meubotao.tscn" id="4_dwemr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_knros"]
 font = ExtResource("2_x6tfd")

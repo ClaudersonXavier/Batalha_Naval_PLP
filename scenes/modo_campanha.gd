@@ -9,7 +9,7 @@ const PATH_COLOR := Color(0.862745, 0.25098, 0.25098, 0.95)
 const PATH_WIDTH := 3.0
 const DASH_LENGTH := 9.0
 const GAP_LENGTH := 7.0
-const MENU_SCENE_PATH := "res://MenuPrincipal.tscn"
+const MENU_SCENE_PATH := "res://scenes/ui/MenuPrincipal.tscn"
 const BATTLE_SCENE_PATH := "res://scenes/cena-batalha.tscn"
 
 @onready var progress_line: Line2D = $ProgressLine
