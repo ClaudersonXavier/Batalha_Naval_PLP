@@ -83,7 +83,10 @@ Arquivos centrais da lógica:
 src/
 |-- lib.rs
 |-- application/
-|   |-- controlador_batalha.rs
+|   |-- app_paths.rs
+|   |-- controlador_batalha/
+|   |   |-- mod.rs
+|   |   `-- internal.rs
 |   |-- fase_posicionamento.rs
 |   |-- fase_selecao_dificuldade.rs
 |   |-- gerenciador_audio.rs
@@ -108,9 +111,24 @@ src/
 |   `-- mod.rs
 `-- presentation/
     |-- batalha/
+    |-- cena_conquistas.rs
     |-- cena_fim_de_jogo.rs
     |-- cena_ranking.rs
     `-- mod.rs
+
+scripts/
+|-- autoload/
+|   |-- campaign_state.gd
+|   |-- session_store.gd
+|   `-- usuario_logado_overlay.gd
+`-- ui/
+    |-- login/tela_login.gd
+    `-- menu/v_box_container.gd
+
+scenes/
+`-- ui/
+    |-- TelaLogin.tscn
+    `-- MenuPrincipal.tscn
 ```
 
 Responsabilidades por camada:

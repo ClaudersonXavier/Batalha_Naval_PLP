@@ -1,25 +1,30 @@
-# Godot 4+ specific ignores
-.godot/
+# Godot 4 generated editor/import cache
+/.godot/
+
+# Godot 3 legacy import cache (if present)
+/.import/
+
+# Android export artifacts
 /android/
-/target
 
-/# Godot 4+ specific ignores
-.godot/
-.nomedia
+# Rust build output
+/target/
 
-# Godot-specific ignores
-.import/
+# Godot export credentials and temporary files
 export.cfg
 export_credentials.cfg
 *.tmp
-
-# Imported translations (automatically generated from CSV files)
 *.translation
+.nomedia
 
-# Mono-specific ignores
+# IDE / local tooling
+/.idea/
 .mono/
 data_*/
-mono_crash.*.json.idea
+mono_crash.*.json
 
-/.idea
+# Runtime local data
 /dados/
+
+# Keep Godot import metadata versioned
+!*.import

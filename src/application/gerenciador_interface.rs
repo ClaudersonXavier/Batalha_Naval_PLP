@@ -273,12 +273,6 @@ impl GerenciadorInterface {
         }
     }
 
-    pub fn mostrar_container_navios(&mut self) {
-        if let Some(mut container) = self.container_navios.clone() {
-            container.set_visible(true);
-        }
-    }
-
     pub fn esconder_container_navios(&mut self) {
         if let Some(mut container) = self.container_navios.clone() {
             container.set_visible(false);
