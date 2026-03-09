@@ -102,17 +102,17 @@ impl CenaConquistas {
         let mut lista_container = self.base().get_node_as::<VBoxContainer>("VBoxContainer");
 
         let todas_conquistas = vec![
-            ("Almirante", "Vencer sem perder navios"),
-            ("Capitao", "Acertar 7 tiros seguidos"),
-            ("CapitaoDeMarEGuerra", "Acertar 8 tiros seguidos"),
-            ("Marinheiro", "Vencer em 20 rodadas ou menos"),
+            ("Almirante", "Almirante", "Vencer sem perder navios"),
+            ("Capitao", "Capitão", "Acertar 7 tiros seguidos"),
+            ("CapitaoDeMarEGuerra", "Capitão de Mar e Guerra", "Acertar 8 tiros seguidos"),
+            ("Marinheiro", "Marinheiro", "Vencer em 20 rodadas ou menos"),
         ];
 
-        for (nome, descricao) in todas_conquistas {
+        for (id_interno, nome_exibido, descricao) in todas_conquistas {
             let mut label = Label::new_alloc();
-            let mut texto = format!("{} - {}", nome, descricao);
+            let mut texto = format!("{} - {}", nome_exibido, descricao);
 
-            if desbloqueadas.contains(&nome.to_string()) {
+            if desbloqueadas.contains(&id_interno.to_string()) {
                 texto = format!("✅ {}", texto);
                 label.set_modulate(Color::from_rgb(1.0, 0.84, 0.0));
             } else {
