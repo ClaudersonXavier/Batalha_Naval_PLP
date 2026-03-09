@@ -1,7 +1,7 @@
 <a id="topo"></a>
 
 <p align="center">
-  <img src="header-project-rust.png" alt="Gameplay Batalha Naval"/>
+  <img src="docs/assets/header_project_rust.png" alt="Gameplay Batalha Naval"/>
 </p>
 
 <h1 align="center">Rustland Sea Raiders (Rust + Godot)</h1>
@@ -49,7 +49,7 @@ Projeto acadêmico desenvolvido para a disciplina de **Paradigmas de Linguagens 
 
 ## Preview
 
-![Preview do jogo](image.png)
+![Preview do jogo](docs/assets/preview_gameplay.png)
 
 <a id="tecnologias"></a>
 ## Tecnologias
