@@ -215,11 +215,9 @@ impl INode2D for ControladorBatalha {
                         self.perder_teste();
                         return;
                     }
-                    // F3 -> alternar X-Ray (só disponível no modo dinâmico)
+                    // F3 -> alternar X-Ray
                     Key::F3 => {
-                        if self.modo_dinamico {
-                            self.alternar_xray();
-                        }
+                        self.alternar_xray();
                         return;
                     }
                     _ => {}
@@ -490,7 +488,7 @@ impl ControladorBatalha {
         let pos_x = 24.0;
         let pos_y = (viewport.y - 112.0).max(16.0);
 
-        let mostrar_xray = self.modo_dinamico && !self.gerenciador_turnos.jogo_terminou();
+        let mostrar_xray = !self.gerenciador_turnos.jogo_terminou();
 
         let Some(ref mut mapa_xray) = self.mapa_xray_ia else {
             return;
